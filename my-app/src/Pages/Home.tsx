@@ -9,5 +9,4 @@ export default function Home() {
             <img src={"/src/images/foto3.jpeg"} alt={"foto gatto"} id={"foto3"}/>
         </>
     );
-
 }
