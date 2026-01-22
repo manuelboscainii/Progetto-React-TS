@@ -24,7 +24,7 @@ function App(){
         <>
             <QueryClientProvider client = {client}>
 
-            <h1>🐱 ADOZIONE GATTI 🐱</h1>
+            <h1 id={"adozione-gatti"}>🐱 ADOZIONE GATTI 🐱</h1>
 
             <BrowserRouter>
                 <nav>
