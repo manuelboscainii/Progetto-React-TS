@@ -1,68 +1,243 @@
+/* File CSS per il progetto di adozione gatti */
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --text: #0f1724;
+  --accent: #2563eb;
+  --radius: 12px;
+  --gap: 1rem;
+  --max-width: 1100px;
+  --shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Minimal reset */
+* {
+  box-sizing: border-box
 }
 
-body {
+html,
+body,
+#root {
+  height: 100%;
   margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased
+}
+
+/* App container */
+#root {
+  max-width: var(--max-width);
+  margin: 2rem auto;
+  padding: 1.25rem;
+}
+
+/* Header */
+header {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: 1rem
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.logo {
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none
 }
 
-button {
+nav {
+  display: flex;
+  gap: .5rem
+}
+
+nav a {
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 150ms
+}
+
+nav a:hover {
+  background: #eef2ff;
+  color: var(--accent);
+  transform: translateY(-2px)
+}
+
+/* Card */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(15, 23, 36, 0.04)
+}
+
+/* Grid of cats */
+.gatti-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--gap);
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0
+}
+
+.gatto-item {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 10px;
+  transition: transform .18s, box-shadow .18s;
+  border: 1px solid rgba(15, 23, 36, 0.03);
+  display: flex;
+  flex-direction: column
+}
+
+.gatto-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(16, 24, 40, 0.08)
+}
+
+.gatto-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  margin-bottom: .6rem
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.gatto-details h4 {
+  margin: 0 0 .25rem 0;
+  font-size: 1rem
+}
+
+.gatto-details p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .95rem
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  transition: transform .12s
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(15, 23, 36, 0.06)
+}
+
+.btn:active {
+  transform: translateY(1px)
+}
+
+.adotta-btn {
+  margin-top: .6rem;
+  width: 100%
+}
+
+/* Form */
+.adozione-form {
+  max-width: 640px;
+  margin: 0 auto;
+  display: grid;
+  gap: .6rem
+}
+
+.adozione-form label {
+  font-size: .9rem;
+  color: var(--muted)
+}
+
+.adozione-form input[type="text"],
+.adozione-form input[type="email"],
+.adozione-form input[type="tel"],
+.adozione-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(15, 23, 36, 0.06);
+  background: transparent
+}
+
+.error {
+  color: #ef4444;
+  font-size: .875rem
+}
+
+.confirmation {
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  padding: 1rem;
+  border-radius: 10px;
+  color: var(--text);
+  text-align: center
+}
+
+/* Helpers */
+.center {
+  text-align: center
+}
+
+.small {
+  font-size: .85rem;
+  color: var(--muted)
+}
+
+/* Focus */
+:focus {
+  outline: none
+}
+
+:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.12);
+  outline-offset: 2px;
+  border-radius: 8px
+}
+
+/* Responsive */
+@media (max-width:720px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start
   }
-  a:hover {
-    color: #747bff;
+
+  .gatto-item img {
+    height: 140px
   }
-  button {
-    background-color: #f9f9f9;
+
+  #root {
+    padding: 1rem;
+    margin: 1rem
   }
+}
+
+/* Small utility IDs preserved (lightweight) */
+#foto2,
+#foto3 {
+  width: 100%;
+  max-width: 240px
+}
+
+#adozione-gatti {
+  font-size: 2.2rem;
+  margin: 0
 }
