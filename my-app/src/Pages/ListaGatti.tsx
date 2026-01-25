@@ -5,15 +5,15 @@
 
 import useFetch from "../Core/Hook/useFetch.ts";
 import type { IGatto } from "../Core/Models/TListaGatti.ts";
-import {Link, Route, Routes} from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import Adozione from "./Adotta.tsx";
 
 // Definisco un nuovo tipo GattoUrl che estende IGatto aggiungendo la proprietà url
 type GattoUrl = IGatto & { url: string };
 
 // Componente principale della pagina ListaGatti, creo la funzione ListaGatti per mostrare una lista di gatti con immagini e link alla pagina di adozione
-export default  function ListaGatti() {
-    
+export default function ListaGatti() {
+
     // Utilizzo il custom hook useFetch per recuperare i dati dei gatti dall'API
     const { data: gatti, loading, error } = useFetch<GattoUrl[]>("https://api.thecatapi.com/v1/images/search?limit=30&breed_ids=beng&api_key=live_R2tLa1J5cNoWlz7CcLMbPUFaqC5QQK7P3vETJcE4bEhjChdECHIHGrAE2hRLfptd");
 
@@ -37,7 +37,7 @@ export default  function ListaGatti() {
                             <Routes>
                                 <Route path="/adotta" element={<Adozione />} />
                             </Routes>
-                        </button> 
+                        </button>
                     </li>
                 ))}
             </ul>
