@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 /**
- * In: url: string
+ * IN: url: string
  * OUT:
  *      - dati
  *      - loading
@@ -27,8 +27,13 @@ export default function useFetch<T>(url: string) {
     // LOADING
     const [loading, setLoading] = useState<boolean>();
 
+    // Funzione per il fetch dei dati
     async function getData() {
+
+        // Imposto lo stato di loading a true
         setLoading(true);
+
+        // Resetto errori e dati 
         try {
             const res = await fetch(url);
 
@@ -51,5 +56,5 @@ export default function useFetch<T>(url: string) {
         getData();
     }, []);
 
-    return {data, loading, error}
+    return { data, loading, error }
 }
