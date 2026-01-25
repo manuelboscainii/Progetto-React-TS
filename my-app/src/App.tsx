@@ -12,51 +12,53 @@ import ListaGatti from "./Pages/ListaGatti.tsx";
 import Contact from "./Pages/Contacts.tsx";
 import Adozione from "./Pages/Adotta.tsx";
 import PageNotFound from "./Pages/404.tsx";
+import Footer from "./Components/Footer.tsx";
 
 // Configuro il client di React Query con opzioni di default
 const client = new QueryClient({
     defaultOptions: {
         queries:
-            {
-                retryDelay: 1000,
-                retry: 3,
-            }
+        {
+            retryDelay: 1000,
+            retry: 3,
+        }
     }
 });
 
 // Componente principale dell'applicazione, creo la funzione App per gestire il routing e le query
-function App(){
+function App() {
 
-    return(
+    return (
         <>
             {/* Fornisco il client di React Query a tutta l'applicazione */}
-            <QueryClientProvider client = {client}>
+            <QueryClientProvider client={client}>
 
-            <h1 id={"adozione-gatti"}>🐱 ADOZIONE GATTI 🐱</h1>
+                <h1 id={"adozione-gatti"}>🐱 ADOZIONE GATTI 🐱</h1>
 
-            {/* Configuro il router per gestire la navigazione tra le pagine */}
-            <BrowserRouter>
-                <nav>
-                    <Link to ='/home'>Home</Link>
-                    <Link to ='/listagatti'>Lista Gatti</Link>
-                    <Link to ='/aboutus'>About Us</Link>
-                    <Link to ='/contact'>Contacts</Link>
-                    <Link to ='/adotta'>Adotta</Link>
-                </nav>
+                {/* Configuro il router per gestire la navigazione tra le pagine */}
+                <BrowserRouter>
+                    <nav>
+                        <Link to='/home'>Home</Link>
+                        <Link to='/listagatti'>Lista Gatti</Link>
+                        <Link to='/aboutus'>About Us</Link>
+                        <Link to='/contact'>Contacts</Link>
+                        <Link to='/adotta'>Adotta</Link>
+                    </nav>
 
-                {/* Definisco le rotte per le diverse pagine dell'applicazione */}
-                <Routes>
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/listagatti" element={<ListaGatti />} />
-                    <Route path="/aboutus" element={<AboutUs />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/adotta" element={<Adozione />} />
-                    <Route path="*" element={<PageNotFound />} />
-                </Routes>
+                    {/* Definisco le rotte per le diverse pagine dell'applicazione */}
+                    <Routes>
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/listagatti" element={<ListaGatti />} />
+                        <Route path="/aboutus" element={<AboutUs />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/adotta" element={<Adozione />} />
+                        <Route path="*" element={<PageNotFound />} />
+                    </Routes>
 
-            </BrowserRouter>
+                </BrowserRouter>
             </QueryClientProvider>
 
+            <Footer />
         </>);
 }
 
