@@ -13,7 +13,6 @@
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-/* Minimal reset */
 * {
   box-sizing: border-box
 }
@@ -28,8 +27,10 @@ body,
   -webkit-font-smoothing: antialiased
 }
 
-/* App container */
 #root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   max-width: var(--max-width);
   margin: 2rem auto;
   padding: 1.25rem;
@@ -70,7 +71,6 @@ nav a:hover {
   transform: translateY(-2px)
 }
 
-/* Card */
 .card {
   background: var(--card);
   border-radius: var(--radius);
@@ -79,7 +79,6 @@ nav a:hover {
   border: 1px solid rgba(15, 23, 36, 0.04)
 }
 
-/* Grid of cats */
 .gatti-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -192,7 +191,6 @@ nav a:hover {
   text-align: center
 }
 
-/* Helpers */
 .center {
   text-align: center
 }
@@ -202,7 +200,6 @@ nav a:hover {
   color: var(--muted)
 }
 
-/* Focus */
 :focus {
   outline: none
 }
@@ -230,7 +227,6 @@ nav a:hover {
   }
 }
 
-/* Small utility IDs preserved (lightweight) */
 #foto2,
 #foto3 {
   width: 100%;
@@ -242,26 +238,16 @@ nav a:hover {
   margin: 0
 }
 
-/* Footer sempre visibile in basso (fixed) - mira solo al nostro footer usando aria-label */
 footer[aria-label="footer-sito"] {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 64px;
+  margin-top: auto; 
   background: var(--card);
   border-top: 1px solid rgba(15, 23, 36, 0.06);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
   padding: 8px 16px;
 }
 
-/* Spazio sotto il contenuto per evitare che venga coperto dal footer fisso */
-body { padding-bottom: 84px; }
-
 @media (max-width: 720px) {
-  footer[aria-label="footer-sito"] { height: 56px; padding: 6px 12px; }
-  body { padding-bottom: 72px; }
+  footer[aria-label="footer-sito"] { padding: 6px 12px; }
 }
