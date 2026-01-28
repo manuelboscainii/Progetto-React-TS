@@ -1,73 +1,139 @@
-# React + TypeScript + Vite
+# Progetto-React-TS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Progetto in React + TypeScript.
+Questo repository contiene una piccola applicazione per la gestione di una lista di gatti (visualizzazione, adozione...) e la sua implementazione.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Indice
+---
+- Descrizione
+- Requisiti
+- Installazione ed esecuzione
+- Struttura del progetto
+- Come collegare una repository remota (GitHub)
+- Elenco delle funzionalità completate
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+➤ Descrizione
 
-## Expanding the ESLint configuration
+Questa applicazione è un template didattico in React + TypeScript. 
+Quello che volevo andare a creare era una SPA (Single Page Application) che permettesse di visualizzare una lista di gatti, 
+con la possibilità di adottarli e visualizzare alcune informazioni aggiuntive.
+Oltre alla chiamata alla API pubblica per ottenere i dati dei gatti, ho strutturato l'applicazione
+in più pagine (Home, Lista Gatti, Adozione, About Us, Contact) navigabili tramite React Router.
+Per la parte di css e del footer mi sono fatto dare una mano da copilot, facendomi spiegare passo passo cosa stava facendo e le funzioni che stava implementando. 
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+➤ Requisiti
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Node.js LTS
+- npm (fornito con Node.js)
+- macOS/Linux/Windows con shell (qui sono mostrati comandi per zsh)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+➤ Installazione (locale)
+
+1. Apri una shell nella cartella del progetto:
+
+```zsh
+cd "/Users/manuelboscaini/Desktop/Boscaini - Progetto React + TS/my-app"
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Installa le dipendenze:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```zsh
+npm install
 ```
+
+3. Avvia l'ambiente di sviluppo:
+
+```zsh
+npm run dev
+```
+
+---
+
+➤ Struttura del progetto (principali cartelle/file)
+
+- `src/App.tsx` — root component
+- `src/Pages/` — pagine (Home, ListaGatti, Adozione, AboutUs, Contact, 404)
+- `src/Core/Hook/` — hook personalizzati (es. `useFetch.ts`)
+- `src/Core/Models/` — modelli/typedefs (es. `TListaGatti.ts`)
+- `src/Components/` — componenti riutilizzabili (es. `Footer.tsx`)
+- `src/assets/` — immagini e risorse statiche
+- `public/` — file serviti staticamente
+
+---
+
+➤ Collegare il progetto a GitHub (linkare a una repository esistente)
+
+Se vuoi collegare questo progetto a una repository remota esistente (ad es. GitHub), i passaggi principali sono:
+
+1. Inizializza git se non è presente:
+
+```zsh
+git init
+```
+
+2. Aggiungi tutti i file e fai commit:
+
+```zsh
+git add .
+git commit -m "Initial commit"
+```
+
+3. Aggiungi il remote (HTTPS o SSH):
+
+```zsh
+# HTTPS
+git remote add origin https://github.com/username/repo.git
+
+# oppure SSH
+git remote add origin git@github.com:username/repo.git
+```
+
+4. Se il remote è vuoto:
+
+```zsh
+git branch -M main
+git push -u origin main
+```
+
+5. Se il remote ha già una storia e vuoi unirla senza sovrascriverla:
+
+```zsh
+git pull origin main --allow-unrelated-histories
+# risolvi conflitti se presenti
+git push -u origin main
+```
+
+---
+
+➤ Elenco delle funzionalità completate:
+- Setup del progetto in React + TypeScript con script di sviluppo (npm run dev).
+- Single Page Application (SPA) con routing tramite React Router.
+- Pagine principali implementate in `src/Pages/`: Home, ListaGatti, Adozione, AboutUs, Contact e pagina 404.
+- Integrazione con API pubblica per dati sui gatti e le loro immagini.
+- Hook personalizzato `useFetch.ts` in `src/Core/Hook/` per chiamate API e gestione stato di caricamento/errore.
+- Tipi/modelli in `src/Core/Models/` (es. `TListaGatti.ts`) per tipizzazione dei dati.
+- Componenti riutilizzabili in `src/Components/` (es. `Footer.tsx`) e styling CSS integrato.
+- Form di adozione attraverso la pagina Adozione.
+- Documentazione: README.md con istruzioni di installazione, esecuzione e collegamento a GitHub.
+
+---
+
+➤ Licenza
+
+MIT License
+
+---
+
+➤ Autore
+
+Manuel Boscaini
+
+---
