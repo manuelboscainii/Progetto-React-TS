@@ -10,7 +10,7 @@ type FooterProps = {
 
 // Componente Footer che mostra le informazioni di copyright e autore
 const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear(), className = "" }) => {
-    
+
     // Renderizzo il footer con le informazioni
     return (
 
